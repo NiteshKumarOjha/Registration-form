@@ -10,6 +10,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 
+
 export default function SignIn() {
   const [formData, setFormData] = useState({});
 
@@ -45,13 +46,13 @@ export default function SignIn() {
       dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
-      dispatch(signInFailure(error));
+      dispatch(signInFailure(error.message));
     }
   };
 
   return (
     <div>
-      <div className=" text-white p-3 max-w-md mx-auto">
+      <div className="text-white p-3 max-w-md mx-auto">
         <h1 className="text-3xl text-center font-semibold my-7">Sign In</h1>
         <form
           onSubmit={handleSubmit}
@@ -73,10 +74,11 @@ export default function SignIn() {
           />
           <button
             disabled={loading}
-            className="bg-yellow-200 opacity-95 text-black text-bold p-3 rounded-lg uppercase hover:opacity-85 disabled: opacity-80"
+            className="bg-yellow-200 opacity-95 text-black text-bold p-3 rounded-lg uppercase hover:opacity-85 disabled:opacity-80"
           >
             {loading ? "Loading..." : "Sign In"}
           </button>
+       
         </form>
         <div className="flex gap-2 mt-5">
           <p>Not a member?</p>
@@ -84,9 +86,7 @@ export default function SignIn() {
             <span className="text-blue-500">Register Now</span>
           </Link>
         </div>
-        <p className="text-red-700 mt-5">
-          {error ? error || "Something went wrong :(" : ""}
-        </p>
+        {error && <p className="text-red-700 mt-5">{error}</p>}
       </div>
     </div>
   );
