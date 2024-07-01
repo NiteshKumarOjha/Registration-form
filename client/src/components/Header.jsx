@@ -10,7 +10,7 @@ export default function Header() {
           </Link>
         </div>
         <div>
-          <ul className="flex gap-6 text-white">
+          <ul className="flex gap-6 text-white mr-2">
             <Link to="/home">
               <li>Home</li>
             </Link>
