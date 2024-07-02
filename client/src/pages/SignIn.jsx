@@ -37,6 +37,7 @@ export default function SignIn() {
       const data = await res.json();
 
       if (data.success === false) {
+        alert("Check your email/password");
         dispatch(signInFailure(data.error));
         return;
       }
